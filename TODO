@@ -1,6 +1,6 @@
 [x] Faire un main.cpp
 [x] Faire un Makefile
-[ ] Intégrer boost/asio
+[x] Intégrer boost/asio
 [ ] Lire sur un socket (avec un port arbitraire)
 [ ] Faire un "select" pour lire la socket que quand nécessaire
 [ ] Faire un fichier de conf avec le port
