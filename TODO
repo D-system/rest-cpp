@@ -1,0 +1,9 @@
+[ ] Faire un main.cpp
+[ ] Faire un Makefile
+[ ] Intégrer boost/asio
+[ ] Lire sur un socket (avec un port arbitraire)
+[ ] Faire un "select" pour lire la socket que quand nécessaire
+[ ] Faire un fichier de conf avec le port
+[ ] Faire un système pour les routes (tableaux de structures avec la route et un pointeur sur fonction/méthode)
+[ ] Faire la persistance des fichiers
+[ ] Faire la lecture des fichiers
