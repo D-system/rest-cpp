@@ -1,4 +1,4 @@
-[ ] Faire un main.cpp
+[x] Faire un main.cpp
 [ ] Faire un Makefile
 [ ] Intégrer boost/asio
 [ ] Lire sur un socket (avec un port arbitraire)
