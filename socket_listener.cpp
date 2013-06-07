@@ -13,6 +13,8 @@ void	listener(boost::asio::io_service& io)
 
   std::string message = "Hello World!";
 
+  std::cout << socket.remote_endpoint();
+
   boost::system::error_code ignored_error;
   boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
 
