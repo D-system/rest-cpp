@@ -1,16 +1,16 @@
 
 NAME    = MyRestSql
 
-SRC     =	main.c			\
+SRC     =	main.cpp			\
 		socket_listener.cpp
 
-OBJ	= $(SRC:.c=.o)
+OBJ	= $(SRC:.cpp=.o)
 
 CC      = g++
 
 CFLAGS  = -W -Wall -O -O2
 
-LFLAGS	= -lboost_system -pthread
+LFLAGS	= -lboost_system -pthread -lboost_regex
 
 RM      = rm -f
 
