@@ -2,7 +2,8 @@
 NAME    = MyRestSql
 
 SRC     =	main.cpp			\
-		socket_listener.cpp
+		socket_listener.cpp		\
+		client_handler.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
