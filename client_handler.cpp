@@ -16,18 +16,31 @@ void	get_request_from_socket(tcp::socket &socket, std::string &request) {
   std::copy(buffer.begin(), buffer.begin() + size, std::back_inserter(request));
 }
 
-bool	parse_request_string(const std::string& str, request_t& request) {
-  boost::regex pattern_method_uri("^([A-Za-z]+)[ \t]+([\\S]+)");
-  boost::regex pattern_content("^([^\r\n]+\r\n)*\r\n(.*)$");
-  boost::smatch result;
+bool	parse_request_string(const std::string& str, request_t& request_st) {
+  boost::regex	pattern_method_uri("^([A-Za-z]+)[ \t]+([\\S]+)");
+  boost::regex	pattern_content("^([^\r\n]+\r\n)*\r\n(.*)$");
+  boost::smatch	result;
+  std::string uri_copy;
+  std::string delimiter = "/";
+  int pos = 0;
+  std::string token;
 
   if ( ! boost::regex_search(str, result, pattern_method_uri) )
     return (false);
-  request.method = result[1];
-  request.uri = result[2];
+  request_st.method = result[1];
+  request_st.uri = result[2];
 
   if ( boost::regex_search(str, result, pattern_content) )
-    request.content = result[ result.size() - 1 ];
+    request_st.content = result[ result.size() - 1 ];
+
+  uri_copy = request_st.uri;
+  while ((pos = uri_copy.find(delimiter)) != std::string::npos) {
+    token = uri_copy.substr(0, pos);
+    request_st.uri_args.push_back(token);
+    uri_copy.erase( 0, pos + delimiter.length() );
+  }
+  if (uri_copy.length() != 0)
+    request_st.uri_args.push_back(uri_copy);
   return (true);
 }
 
@@ -36,9 +49,14 @@ void	handle_client(tcp::socket& socket) {
   request_t	request_st;
 
   get_request_from_socket(socket, request);
-  parse_request_string(request, request_st);
+  if (parse_request_string(request, request_st) == false)
+    return ;
+  // for(std::vector<std::string>::iterator it = request_st.uri_args.begin(); it != request_st.uri_args.end(); ++it) {
+  //   std::cout << *it << std::endl;
+  // }
 
-  std::string message = "Hello World!";
-  boost::system::error_code ignored_error;
-  boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
+  // std::string message = "Hello World!";
+  // boost::system::error_code ignored_error;
+  // boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
+  socket.close();
 }
