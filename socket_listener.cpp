@@ -12,7 +12,8 @@ void	listener(boost::asio::io_service& io)
   tcp::acceptor	acceptor(io, tcp::endpoint(tcp::v4(), 8080));
   tcp::socket	socket(io);
 
-  acceptor.accept(socket);
-  handle_client(socket);
-  socket.close();
+  while (1) {
+    acceptor.accept(socket);
+    handle_client(socket);
+  }
 }
