@@ -5,6 +5,6 @@
 
 using boost::asio::ip::tcp;
 
-void	error501(tcp::socket& socket);
+void	response501(tcp::socket& socket);
 
 #endif	// !__ERRORS__

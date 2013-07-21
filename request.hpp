@@ -13,7 +13,6 @@ typedef struct			request_s {
   std::string			uri;
   std::string			content;
   std::vector<std::string>	uri_args;
-  tcp::socket*			socket;
 }				request_t;
 
 

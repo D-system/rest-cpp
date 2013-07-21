@@ -16,5 +16,5 @@ void	routing(request_t& request_st, tcp::socket& socket) {
       return ;
     }
   }
-  error501( *(request_st.socket) );
+  responses501( socket );
 }

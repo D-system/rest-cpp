@@ -50,7 +50,6 @@ void	handle_client(tcp::socket& socket) {
   std::string	request;
   request_t	request_st;
 
-  request_st.socket = &socket;
   get_request_from_socket(socket, request);
   if (parse_request_string(request, request_st) == false)
     return ;
@@ -58,9 +57,5 @@ void	handle_client(tcp::socket& socket) {
   // for(std::vector<std::string>::iterator it = request_st.uri_args.begin(); it != request_st.uri_args.end(); ++it) {
   //   std::cout << *it << std::endl;
   // }
-
-  // std::string message = "Hello World!";
-  // boost::system::error_code ignored_error;
-  // boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
   socket.close();
 }
