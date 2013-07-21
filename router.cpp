@@ -1,6 +1,6 @@
 #include "router.hpp"
 #include "get_action.hpp"
-#include "errors.hpp"
+#include "responses.hpp"
 
 route_t gl_routes[] = {
   { (char*)"GET", get_action },
@@ -16,5 +16,5 @@ void	routing(request_t& request_st, tcp::socket& socket) {
       return ;
     }
   }
-  responses501( socket );
+  response501( socket );
 }
