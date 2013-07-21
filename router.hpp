@@ -7,11 +7,13 @@
 #include <boost/regex.hpp>
 #include "request.hpp"
 
-void		routing(request_t& request_st);
+using boost::asio::ip::tcp;
+
+void		routing(request_t& request_st, tcp::socket& socket);
 
 typedef	struct	route_s {
   char*		str;
-  void		(*ptr)(request_t& request_st);
+  void		(*ptr)(request_t& request_st, tcp::socket& socket);
 }		route_t;
 
 #endif	// !__ROUTER__

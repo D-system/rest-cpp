@@ -3,6 +3,8 @@
 
 #include "request.hpp"
 
-void	get_action(request_t& request_st);
+using boost::asio::ip::tcp;
+
+void	get_action(request_t& request_st, tcp::socket& socket);
 
 #endif	// !__GET_ACTION__
