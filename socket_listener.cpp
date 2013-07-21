@@ -14,4 +14,5 @@ void	listener(boost::asio::io_service& io)
 
   acceptor.accept(socket);
   handle_client(socket);
+  socket.close();
 }
