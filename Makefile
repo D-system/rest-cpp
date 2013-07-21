@@ -6,6 +6,7 @@ SRC     =	main.cpp			\
 		client_handler.cpp		\
 		router.cpp			\
 		get_action.cpp			\
+		post_action.cpp			\
 		responses.cpp
 
 OBJ	= $(SRC:.cpp=.o)
