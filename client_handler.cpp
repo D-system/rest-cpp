@@ -1,5 +1,6 @@
 
 #include "client_handler.hpp"
+#include "router.hpp"
 
 using boost::asio::ip::tcp;
 
@@ -36,7 +37,8 @@ bool	parse_request_string(const std::string& str, request_t& request_st) {
   uri_copy = request_st.uri;
   while ((pos = uri_copy.find(delimiter)) != std::string::npos) {
     token = uri_copy.substr(0, pos);
-    request_st.uri_args.push_back(token);
+    if ( token.length() != 0 )
+      request_st.uri_args.push_back(token);
     uri_copy.erase( 0, pos + delimiter.length() );
   }
   if (uri_copy.length() != 0)
@@ -48,9 +50,11 @@ void	handle_client(tcp::socket& socket) {
   std::string	request;
   request_t	request_st;
 
+  request_st.socket = &socket;
   get_request_from_socket(socket, request);
   if (parse_request_string(request, request_st) == false)
     return ;
+  routing(request_st);
   // for(std::vector<std::string>::iterator it = request_st.uri_args.begin(); it != request_st.uri_args.end(); ++it) {
   //   std::cout << *it << std::endl;
   // }

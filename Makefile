@@ -3,7 +3,10 @@ NAME    = MyRestSql
 
 SRC     =	main.cpp			\
 		socket_listener.cpp		\
-		client_handler.cpp
+		client_handler.cpp		\
+		router.cpp			\
+		get_action.cpp			\
+		errors.cpp
 
 OBJ	= $(SRC:.cpp=.o)
 
