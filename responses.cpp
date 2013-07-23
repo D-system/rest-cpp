@@ -1,10 +1,13 @@
 
 #include "responses.hpp"
 
-void	response200(tcp::socket& socket) {
+void	response200(tcp::socket& socket, std::ifstream& file) {
   std::string message = "HTTP1/1 200 Ok\r\n\r\n";
+  std::string file_string((std::istreambuf_iterator<char>(file)), std::istreambuf_iterator<char>());
+  message += file_string;
   boost::system::error_code ignored_error;
   boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
+  // boost::asio::write(socket, boost::asio::buffer(file), ignored_error);
 }
 
 void	response201(tcp::socket& socket, std::string& location) {

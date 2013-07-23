@@ -15,7 +15,7 @@ CC      = g++
 
 CFLAGS  = -W -Wall -O -O2
 
-LFLAGS	= -lboost_system -pthread -lboost_regex
+LFLAGS	= -lboost_system -pthread -lboost_regex -lboost_filesystem
 
 RM      = rm -f
 
