@@ -7,8 +7,10 @@ void	response200(tcp::socket& socket) {
   boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
 }
 
-void	response201(tcp::socket& socket) {
-  std::string message = "HTTP1/1 201 Created\r\n\r\n";
+void	response201(tcp::socket& socket, std::string& location) {
+  std::string message = "HTTP1/1 201 Created\r\nLocation ";
+  message += location;
+  message += "\r\n\r\n";
   boost::system::error_code ignored_error;
   boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
 }
@@ -27,6 +29,12 @@ void	response400(tcp::socket& socket) {
 
 void	response404(tcp::socket& socket) {
   std::string message = "HTTP1/1 404 Not Found\r\n\r\n";
+  boost::system::error_code ignored_error;
+  boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
+}
+
+void	response500(tcp::socket& socket) {
+  std::string message = "HTTP1/1 500 Internal Server Error\r\n\r\n";
   boost::system::error_code ignored_error;
   boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
 }
