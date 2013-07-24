@@ -1,3 +1,6 @@
+
+#include <boost/algorithm/string.hpp>
+#include <string>
 #include "router.hpp"
 #include "get_action.hpp"
 #include "post_action.hpp"
@@ -13,9 +16,10 @@ route_t gl_routes[] = {
 
 void	routing(request_t& request_st, tcp::socket& socket) {
   route_t*	routes = gl_routes;
+  std::string	method = boost::to_upper_copy(request_st.method);
 
   for (int i = 0; routes[i].str != NULL; ++i ) {
-    if (routes[i].str == request_st.method) {
+    if (routes[i].str == method) {
       (routes[i].ptr)(request_st, socket);
       return ;
     }
