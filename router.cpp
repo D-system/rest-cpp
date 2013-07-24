@@ -1,9 +1,11 @@
 #include "router.hpp"
 #include "get_action.hpp"
 #include "post_action.hpp"
+#include "delete_action.hpp"
 #include "responses.hpp"
 
 route_t gl_routes[] = {
+  { (char*)"DELETE", delete_action },
   { (char*)"POST", post_action },
   { (char*)"GET", get_action },
   { NULL, NULL }
