@@ -7,7 +7,6 @@ void	response200(tcp::socket& socket, std::ifstream& file) {
   message += file_string;
   boost::system::error_code ignored_error;
   boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
-  // boost::asio::write(socket, boost::asio::buffer(file), ignored_error);
 }
 
 void	response201(tcp::socket& socket, std::string& location) {
