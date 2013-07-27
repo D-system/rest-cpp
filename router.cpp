@@ -11,8 +11,14 @@ route_t gl_routes[] = {
   { (char*)"DELETE", delete_action },
   { (char*)"POST", post_action },
   { (char*)"GET", get_action },
+  { (char*)"PUT",  not_implemented },
+  { (char*)"PATCH", not_implemented },
   { NULL, NULL }
 };
+
+void	not_implemented(request_t& request_st, tcp::socket& socket) {
+  response501( socket );
+}
 
 void	routing(request_t& request_st, tcp::socket& socket) {
   route_t*	routes = gl_routes;
@@ -24,5 +30,5 @@ void	routing(request_t& request_st, tcp::socket& socket) {
       return ;
     }
   }
-  response501( socket );
+  response405( socket );
 }

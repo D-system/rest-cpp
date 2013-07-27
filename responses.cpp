@@ -35,6 +35,12 @@ void	response404(tcp::socket& socket) {
   boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
 }
 
+void	response405(tcp::socket& socket) {
+  std::string message = "HTTP1/1 405 Method Not Allowed\r\n\r\n";
+  boost::system::error_code ignored_error;
+  boost::asio::write(socket, boost::asio::buffer(message), ignored_error);
+}
+
 void	response500(tcp::socket& socket) {
   std::string message = "HTTP1/1 500 Internal Server Error\r\n\r\n";
   boost::system::error_code ignored_error;

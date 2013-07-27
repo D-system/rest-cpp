@@ -9,6 +9,7 @@
 
 using boost::asio::ip::tcp;
 
+void		not_implemented(request_t& request_st, tcp::socket& socket);
 void		routing(request_t& request_st, tcp::socket& socket);
 
 typedef	struct	route_s {
