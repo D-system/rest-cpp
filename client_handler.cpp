@@ -1,4 +1,5 @@
 
+#include <boost/array.hpp>
 #include "client_handler.hpp"
 #include "router.hpp"
 
