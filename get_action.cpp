@@ -25,4 +25,5 @@ void	get_action(request_t& request_st, tcp::socket& socket) {
   if ( ! file.is_open() )
     return response500(socket);
   response200(socket, file);
+  file.close();
 }
