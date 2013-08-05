@@ -3,11 +3,12 @@
 #include <boost/filesystem.hpp>
 #include "delete_action.hpp"
 #include "responses.hpp"
+#include "file_place.hpp"
 
 using namespace boost::filesystem;
 
 void	delete_action(request_t& request_st, tcp::socket& socket) {
-  std::string	file_path;
+  std::string	file_path(FILE_PLACE);
 
   if (request_st.uri_args.size() != 2)
     return response400(socket);
