@@ -3,6 +3,7 @@
 #include <sys/types.h>
 #include "post_action.hpp"
 #include "responses.hpp"
+#include "file_place.hpp"
 
 #define	FILE_NAME_LENGTH 64
 
@@ -22,7 +23,7 @@ char*	gen_random(char *s, const int len) {
 
 void		post_action(request_t& request_st, tcp::socket& socket) {
   char		file_name[FILE_NAME_LENGTH];
-  std::string	path;
+  std::string	path(FILE_PLACE);
 
   if (request_st.uri_args.size() != 1) {
     response400(socket);

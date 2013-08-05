@@ -5,5 +5,8 @@
 C:\Windows\Microsoft.NET\Framework64\v4.0.30319\MSBuild.exe myrestsql2.sln
 :/property:Configuration=Release
 
+:make directory
+mkdir C:\myrestsql
+
 :copy exe
-copy Debug\myrestsql2.exe myrestsql.exe
+copy Debug\myrestsql2.exe C:\myrestsql\myrestsql.exe
