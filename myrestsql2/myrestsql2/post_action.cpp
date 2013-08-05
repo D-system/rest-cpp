@@ -41,8 +41,6 @@ void		post_action(request_t& request_st, tcp::socket& socket) {
   }
   file << request_st.content;
   file.close();
-  request_st.uri = "/";
-  request_st.uri += request_st.uri_args[0];
   request_st.uri += "/";
   request_st.uri += file_name;
   response201(socket, request_st.uri);
