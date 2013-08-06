@@ -55,8 +55,5 @@ void	handle_client(tcp::socket& socket) {
   if (parse_request_string(request, request_st) == false)
     return ;
   routing(request_st, socket);
-  // for(std::vector<std::string>::iterator it = request_st.uri_args.begin(); it != request_st.uri_args.end(); ++it) {
-  //   std::cout << *it << std::endl;
-  // }
   socket.close();
 }
