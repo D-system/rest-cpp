@@ -17,8 +17,6 @@ CC      = g++
 
 CXXFLAGS  = -W -Wall
 
-# CXXFLAGS  = -W -Wall -I/cygdrive/c/Users/Dev/Downloads/boost_1_54_0/ -D__USE_W32_SOCKETS -D _WIN32_WINNT=0x0501
-
 LFLAGS	= -pthread -lboost_system-mt -lboost_regex-mt -lboost_filesystem-mt
 
 RM      = rm -f
@@ -28,7 +26,8 @@ all	 : $(OBJ)
 	   $(CC) -o $(NAME) $(LFLAGS) $(OBJ)
 
 clean	:
-	  $(RM) *.o *~
+	  find . -name "*~" -exec rm {} \;
+	  find . -name "*.o" -exec rm {} \;
 
 fclean	: clean
 	  $(RM) $(NAME)
