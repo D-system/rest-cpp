@@ -1,6 +1,10 @@
 
 NAME    = MyRestSql
 
+INSTALL_DIR = /usr/local/bin
+
+FILES_DIR = /etc/MyRestSql
+
 SRC     =	main.cpp			\
 		socket_listener.cpp		\
 		client_handler.cpp		\
@@ -25,6 +29,11 @@ RM      = rm -f
 all	 : $(OBJ)
 	   $(CC) -o $(NAME) $(LFLAGS) $(OBJ)
 
+install	:
+	  mkdir -p $(INSTALL_DIR)
+	  mkdir -p $(FILES_DIR)
+	  mv $(NAME) $(INSTALL_DIR)
+
 clean	:
 	  find . -name "*~" -exec rm {} \;
 	  find . -name "*.o" -exec rm {} \;
@@ -34,4 +43,4 @@ fclean	: clean
 
 re	: clean all
 
-.PHONY	: clean fclean ld re 
+.PHONY	: clean fclean ld re install

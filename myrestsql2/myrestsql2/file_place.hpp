@@ -5,7 +5,7 @@
 #ifdef _WIN32
 #define FILE_PLACE "C:\\myrestsql\\"
 #else
-#define FILE_PLACE "/tmp/myrestsql/"
+#define FILE_PLACE "/etc/MyRestSql/"
 #endif
 
 #endif	// !__FILE_PLACE__
