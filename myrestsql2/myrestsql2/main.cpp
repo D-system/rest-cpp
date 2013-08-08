@@ -1,6 +1,8 @@
 
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
+#include <sys/types.h>
+#include <unistd.h>
 #include "socket_listener.hpp"
 
 void restsql () {
@@ -161,10 +163,30 @@ DWORD WINAPI ServiceWorkerThread (LPVOID lpParam)
 
 #else
 
-int	main(int argc, char** argv)
+int	main()
 {
+  pid_t pid, sid;
+
+  pid = fork();
+
+  if (pid < 0) {
+    exit(EXIT_FAILURE);
+  }
+  if (pid > 0) {
+    exit(EXIT_SUCCESS);
+  }
+
+  umask(0);
+  sid = setsid();
+  if (sid < 0) {
+    exit(EXIT_FAILURE);
+  }
+  if (chdir("/") < 0) {
+    exit(EXIT_FAILURE);
+  }
+
   restsql();
-  return (0);
+  return (EXIT_SUCCESS);
 }
 
 #endif

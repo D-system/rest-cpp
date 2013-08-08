@@ -1,9 +1,9 @@
 #!/bin/sh
 ### BEGIN INIT INFO
 # Provides:          MyRestSql
-# Required-Start:    $local_fs $network
-# Required-Stop:     $all
-# Default-Start:     4
+# Required-Start:    
+# Required-Stop:     
+# Default-Start:     2
 # Default-Stop:      
 # Short-Description: Start MyRestSql
 # Description:       MyRestSql ETNA's project
