@@ -2,7 +2,6 @@
 #include <boost/bind.hpp>
 #include <boost/asio.hpp>
 #include <sys/types.h>
-#include <unistd.h>
 #include "socket_listener.hpp"
 
 void restsql () {
@@ -162,6 +161,8 @@ DWORD WINAPI ServiceWorkerThread (LPVOID lpParam)
 
 
 #else
+
+# include <unistd.h>
 
 int	main()
 {
