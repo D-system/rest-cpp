@@ -9,7 +9,7 @@ using namespace boost::filesystem;
 
 void	put_action(request_t& request_st, tcp::socket& socket) {
   std::string	file_path(FILE_PLACE);
-  std::ifstream	file;
+  std::ofstream	file;
 
   if (request_st.uri_args.size() != 2)
     return response400(socket);
@@ -25,6 +25,8 @@ void	put_action(request_t& request_st, tcp::socket& socket) {
   file.open( file_path.c_str() );
   if ( ! file.is_open() )
     return response500(socket);
-  // TODO : mettre a jour le fichier
+  file.clear();
+  file << request_st.content;
+  file.close();
   response204(socket);
 }
